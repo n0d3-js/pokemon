@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.13.1",
+    "bcrypt": "^0.8.7",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
@@ -43,6 +44,8 @@
     "joi": "^9.0.1",
     "mongoose": "^4.5.5",
     "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.6.0",

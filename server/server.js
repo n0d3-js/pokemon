@@ -5,7 +5,10 @@ import path from 'path';
 import logger from './config/logging';
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
+import passport from 'passport';
+
 require('./config/database');
+require('./config/authentication');
 
 logger.log('info', '[WINSTON] - log level: %s', process.env.LEVEL);
 
@@ -17,6 +20,7 @@ app.use(express.static(path.join(__dirname, '../static')));
 app.use(favicon(path.join(__dirname, '../static/favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
 const port = process.env.PORT || 3333;
 
@@ -25,6 +29,7 @@ app.listen(port, () => {
 });
 
 app.use('/things', require('./controllers/things'));
+app.use('/api', require('./controllers/authentication'));
 app.use('/api/pokemon', require('./controllers/pokemon'));
 
 app.get('*', (req, res) => {
