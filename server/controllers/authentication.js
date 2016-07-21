@@ -18,5 +18,6 @@ router.post('/register', (req, res) => {
 
 // login
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
-  res.send({ payload: req.user });
+  const token = req.user.token();
+  res.send({ token });
 });

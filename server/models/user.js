@@ -2,6 +2,7 @@
 
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import jwt from 'jwt-simple';
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -10,6 +11,13 @@ const schema = new Schema({
   pokemon: [{ type: mongoose.Schema.ObjectId, ref: 'Pokemon' }],
   dateCreated: { type: Date, default: Date.now },
 });
+
+schema.methods.token = function () {
+  const sub = this._id;
+  const exp = (Date.now() / 1000) + 60;
+  const secret = process.env.SECRET;
+  return jwt.encode({ sub, exp }, secret);
+};
 
 schema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
