@@ -29,6 +29,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "axios": "^0.13.1",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
