@@ -25,6 +25,7 @@ app.listen(port, () => {
 });
 
 app.use('/things', require('./controllers/things'));
+app.use('/api/pokemon', require('./controllers/pokemon'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../static/index.html'));
