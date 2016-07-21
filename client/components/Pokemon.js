@@ -31,6 +31,8 @@ export default class Pokemon extends React.Component {
     return (
       <div>
 
+        <h1>Pokemon</h1>
+
         <div className="row">
           <div className="col-xs-3">
             <form>

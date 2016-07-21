@@ -24,6 +24,8 @@ export default () => (
           <li><Link to="/about"><i className="fa fa-hashtag fa-fw"></i> About</Link></li>
           <li><Link to="/faq"><i className="fa fa-question-circle-o fa-fw"></i> Faq</Link></li>
           <li><Link to="/pokemon"><i className="fa fa-reddit-alien fa-fw"></i> Pokemon</Link></li>
+          <li><Link to="/register"><i className="fa fa-user fa-fw"></i> Register</Link></li>
+          <li><Link to="/login"><i className="fa fa-key fa-fw"></i> Login</Link></li>
         </ul>
       </div>
     </div>

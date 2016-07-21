@@ -26,7 +26,7 @@ tests:
 	@echo [tests]
 	@PORT=5555 DB=pokemon-test-db LEVEL=silly $(BIN)/istanbul cover --print summary $(BIN)/_mocha -- --recursive
 
-watch: all
+watch:
 	@echo [watch]
 	@$(BIN)/chokidar 'client/**/*.js' 'server/**/*.js' 'test/**/*.js' -c 'make all'
 
