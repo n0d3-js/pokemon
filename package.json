@@ -1,8 +1,12 @@
 {
   "name": "pokemon",
   "version": "1.0.3",
+  "engines": {
+    "node": "6.3.0"
+  },
   "scripts": {
-    "dev": "DB=pokemon-dev-db LEVEL=silly PORT=3333 nodemon dst/server.js"
+    "dev": "DB=pokemon-dev-db LEVEL=silly PORT=3333 nodemon dst/server.js",
+    "start": "LEVEL=silly node dst/server.js"
   },
   "author": "Chyld Medford",
   "license": "MIT",
