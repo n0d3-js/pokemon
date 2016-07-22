@@ -1,4 +1,4 @@
-/* eslint-disable func-names */
+/* eslint-disable func-names, no-underscore-dangle */
 
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
@@ -14,7 +14,7 @@ const schema = new Schema({
 
 schema.methods.token = function () {
   const sub = this._id;
-  const exp = (Date.now() / 1000) + 60;
+  const exp = (Date.now() / 1000) + 3600;
   const secret = process.env.SECRET;
   return jwt.encode({ sub, exp }, secret);
 };

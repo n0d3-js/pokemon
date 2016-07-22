@@ -7,11 +7,12 @@ export default class Pokemon extends React.Component {
   constructor(props) {
     super(props);
     this.create = this.create.bind(this);
-    this.state = { pokemon: [] };
+    const authorization = `JWT ${localStorage.getItem('token')}`;
+    this.state = { pokemon: [], authorization };
   }
 
   componentWillMount() {
-    axios.get('/api/pokemon')
+    axios.get('/api/pokemon', { headers: { authorization: this.state.authorization } })
     .then((rsp) => {
       this.setState({ pokemon: rsp.data.pokemon });
     });
@@ -21,7 +22,7 @@ export default class Pokemon extends React.Component {
     e.preventDefault();
     const name = this.refs.name.value;
     const url = this.refs.url.value;
-    axios.post('/api/pokemon', { name, url })
+    axios.post('/api/pokemon', { name, url }, { headers: { authorization: this.state.authorization } })
     .then((rsp) => {
       this.setState({ pokemon: [...this.state.pokemon, rsp.data.pokemon] });
     });
@@ -62,6 +63,7 @@ export default class Pokemon extends React.Component {
                   <th>Image</th>
                 </tr>
               </thead>
+              <tbody>
 
                 {this.state.pokemon.map(p => (
                   <tr key={p._id}>
@@ -70,7 +72,6 @@ export default class Pokemon extends React.Component {
                   </tr>
                 ))}
 
-              <tbody>
               </tbody>
             </table>
           </div>

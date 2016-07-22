@@ -8,14 +8,14 @@ const auth = passport.authenticate('jwt', { session: false });
 
 // index
 router.get('/', auth, (req, res) => {
-  Pokemon.find().exec((err, pokemon) => {
-    res.send({ pokemon });
-  });
+  res.send({ pokemon: req.user.pokemon });
 });
 
 // create
 router.post('/', auth, (req, res) => {
   Pokemon.create(req.body, (err, pokemon) => {
-    res.send({ pokemon });
+    req.user.update({ $push: { pokemon } }, () => {
+      res.send({ pokemon });
+    });
   });
 });

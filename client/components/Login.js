@@ -41,7 +41,7 @@ export default class Login extends React.Component {
 
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input ref="password" type="text" className="form-control" id="password" />
+                <input ref="password" type="password" className="form-control" id="password" />
               </div>
 
               <button onClick={this.create} type="submit" className="btn btn-default">Create</button>
